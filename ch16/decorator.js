@@ -1,0 +1,31 @@
+const { createMultiMethod } = require('./multimethod');
+const { translate, scale , makeCircle, makeSqaure} = require('./composite-shape');
+
+let journalEntries = [];
+
+const makeJournaledShape = (shape) => {
+  return {shapeType: 'journaledShape',
+  shape: shape,
+}};
+
+translate.addMethod('journaledShape', (journaledShape, dx, dy) => {
+  journalEntries.push("translate: " + journaledShape.shape.shapeType);
+  return translate(journaledShape.shape, dx, dy);
+});
+
+
+scale.addMethod('journaledShape', (journaledShape, factor) => {
+  journalEntries.push("scale: " + journaledShape.shape.shapeType);
+  return scale(journaledShape.shape, scale);
+})
+
+const circle = makeCircle({x: 5, y: 10}, 8);
+const square = makeSqaure({x: 8, y: 16}, 5);
+
+const journal1 = makeJournaledShape(circle);
+const journal2 = makeJournaledShape(square);
+
+console.log(translate(journal1, 4, 7));
+console.log(scale(journal2, 3));
+
+console.log(journalEntries);

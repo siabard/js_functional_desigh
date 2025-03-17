@@ -73,3 +73,7 @@ addShape(compositeShape, makeSqaure({x:20, y:30, }, 8));
 
 console.log(translate(compositeShape, 4, 7));
 console.log(scale(compositeShape, 2));
+
+module.exports = {
+  translate, scale, makeCircle, makeSqaure
+}
