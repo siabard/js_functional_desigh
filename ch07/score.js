@@ -72,22 +72,22 @@ loop refactoring
 */
 
 /*
-// Function to split rolls into frames
+// 투구를 프레임 단위로 나누는 함수 
 function toFrames(rolls) {
   const frames = [];
-  let remainingRolls = [...rolls]; // Clone the input array to avoid mutation
+  let remainingRolls = [...rolls]; // 입력된 배열을 복제한다. (기존 값이 바뀌는 것을 방지하기 위함)
 
   while (remainingRolls.length > 0) {
-    // Check if the next two rolls sum to 10 (spare)
+    // 다음 두번의 투구의 총합이 10(스페어) 인지 검사한다.
     if (
       remainingRolls.length >= 2 &&
       remainingRolls.slice(0, 2).reduce((sum, roll) => sum + roll, 0) === 10
     ) {
-      // Add the next 3 rolls as a frame
+      // 스페어 처리시 3번의 투구를 하나의 프레임에 합산한다.
       frames.push(remainingRolls.slice(0, 3));
       remainingRolls = remainingRolls.slice(2); // Drop 2 rolls
     } else {
-      // Add the next 2 rolls as a frame
+      // 스페어 처리를 못했다면 두 번의 투구만 하나의 프레임으로 합산한다.
       frames.push(remainingRolls.slice(0, 2));
       remainingRolls = remainingRolls.slice(2); // Drop 2 rolls
     }
@@ -96,12 +96,12 @@ function toFrames(rolls) {
   return frames;
 }
 
-// Function to add the score of a frame to the total score
+// 한 프레임의 점수를 더해 전체 점수를 계산한다. 
 function addFrames(score, frame) {
   return score + frame.reduce((sum, roll) => sum + roll, 0);
 }
 
-// Main function to calculate the total score
+// 전체 점수를 계산하는 주함수 
 function score(rolls) {
   return toFrames(rolls).reduce(addFrames, 0);
 }
@@ -139,40 +139,40 @@ function score(rolls) {
 
 */
 
-// Function to split rolls into frames
+// 각 투구를 프레임 단위로 나눈다.
 function toFrames(rolls) {
   const frames = [];
-  let remainingRolls = [...rolls]; // Clone the input array to avoid mutation
+  let remainingRolls = [...rolls]; // // 입력된 배열을 복제한다. (기존 값이 바뀌는 것을 방지하기 위함)
 
   while (remainingRolls.length > 0) {
     if (remainingRolls[0] === 10) {
-      // Strike: take the first 3 rolls as a frame
+      // 스트라이크: 3번의 투구를 합산해 하나의 프레임으로 처리한다. 
       frames.push(remainingRolls.slice(0, 3));
-      remainingRolls = remainingRolls.slice(1); // Remove the first roll
+      remainingRolls = remainingRolls.slice(1); // 첫번째 투구를 제외한다.
     } else if (
       remainingRolls.length >= 2 &&
       remainingRolls.slice(0, 2).reduce((sum, roll) => sum + roll, 0) === 10
     ) {
-      // Spare: take the first 3 rolls as a frame
+      // 스페어: 3번의 투구를 합산해 하나의 프레임으로 처리한다.
       frames.push(remainingRolls.slice(0, 3));
-      remainingRolls = remainingRolls.slice(2); // Remove the first 2 rolls
+      remainingRolls = remainingRolls.slice(2); // 처음 두번의 투구를 제한다.
     } else {
-      // Normal frame: take the first 2 rolls as a frame
+      // 일반 프레임: 두 번의 투구를 합산해 하나의 프레임으로 처리한다.
       frames.push(remainingRolls.slice(0, 2));
-      remainingRolls = remainingRolls.slice(2); // Remove the first 2 rolls
+      remainingRolls = remainingRolls.slice(2); // 처음 두 번의 투구를 제한다. 
     }
   }
 
   return frames;
 }
 
-// Function to add a frame's score to the total score
+// 한 프레임의 점수를 더해 전체 점수를 계산한다. 
 function addFrames(score, frame) {
   return score + frame.reduce((sum, roll) => sum + roll, 0);
 }
 
 /*
-// Main function to calculate the total score
+// 전체 점수를 계산하는 주함수 
 function score(rolls) {
   return toFrames(rolls).reduce(addFrames, 0);
 }
@@ -182,10 +182,10 @@ function score(rolls) {
 
 
 function score(rolls) {
-  // Reduce over the first 10 frames to calculate the total score
+  // 전체 점수를 계산할 때 처음 10프레임만 계산한다. 
   return toFrames(rolls)
-    .slice(0, 10) // Take the first 10 frames
-    .reduce(addFrames, 0); // Calculate the score
+    .slice(0, 10) // 처음 10프레임만 가져온다.
+    .reduce(addFrames, 0); // 점수를 계산한다.
 }
 
 
