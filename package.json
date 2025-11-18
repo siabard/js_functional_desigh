@@ -1,9 +1,26 @@
 {
+  "scripts": {
+    "ch06_test": "jest ch06",
+    "ch07_test": "jest ch07",
+    "ch08_test": "jest ch08",
+    "ch09_test": "jest ch09",
+    "ch13_test": "jest ch13",
+    "ch15_test": "jest ch15",
+    "ch16_test": "jest ch16",
+    "ch17_test": "jest ch_17"
+  },
   "devDependencies": {
-    "jest": "^29.7.0",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@jest/globals": "^30.2.0",
+    "@types/jest": "^30.0.0",
+    "babel-jest": "^30.2.0",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "fast-check": "^3.23.2"
+    "fast-check": "^3.23.2",
+    "jest": "^30.2.0"
   }
 }

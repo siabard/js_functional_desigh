@@ -1,6 +1,4 @@
-
 export type MethodTable<A, R> = Map<any, (arg: A) => R>;
-
 export class MultiFn<A, R> {
 	private dispatchFn: (arg: A) => any;
 	private table: MethodTable<A, R> = new Map();
@@ -36,14 +34,13 @@ export type Cell = {
 
 
 
-const tick = new MultiFn<Cell, Cell>(c => c.cell);
+export const tick = new MultiFn<Cell, Cell>(c => c.cell);
 
 tick.defmethod( CellType.WATER, c => {
-	if(Math.random() > 0.4) {
+ 	const rate = Math.random();
+	console.log("RATE => ", rate);
+	if(rate > 0.4) {
 		return { cell: CellType.FISH };
 	}
 	return { cell: CellType.WATER };
 });
-
-
-export { tick };

@@ -33,7 +33,7 @@ function execute(state, lines) {
 }
 
 function executeFile(fileName) {
-    const lines = fs.readFileSync(fileName, 'utf-8').split('\n').filter(Boolean);
+    const lines = fs.readFileSync(fileName, 'utf-8').split('\n');
     const startingState = { x: 1, cycles: [] };
     const endingState = execute(startingState, lines);
     return endingState.cycles;
@@ -45,12 +45,18 @@ function renderCycles(cycles) {
     
     for (const x of cycles) {
         const offset = t - x;
-        const pixel = (-1 <= offset && offset <= 1) ? '#' : '.';
+        const pixel = Math.abs(offset) <= 1 ? '#' : '.';
         screen += pixel;
         t = (t + 1) % 40;
     }
     
-    return screen.match(/.{1,40}/g) || [];
+    // partition 40 chars per line
+    const lines = [];
+    for (let i = 0; i < screen.length; i += 40) {
+	lines.push(screen.slice(i, i + 40));
+    }
+
+    return lines;
 }
 
 function printScreen(lines) {
