@@ -27,6 +27,7 @@ const undo = createMultiMethod(getType);
 let canvas = [];
 
 const addRoom = () => {
+   // 임의의 방을 만들고 canvas 에 방을 등록한다
    const roomNumber = Math.floor(Math.random() * 100);
    const newRoom = {'roomNumber': roomNumber};
     
@@ -35,7 +36,7 @@ const addRoom = () => {
 }
 
 const deleteRoom = (room) => {
-  // working delete room
+  // canvas 에서 방을 삭제한다.
   canvas = canvas.filter(cv => cv.roomNumber != room.roomNumber);
 }
 
