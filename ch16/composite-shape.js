@@ -71,8 +71,11 @@ const compositeShape = makeCompositeShapes();
 addShape(compositeShape, makeCircle({x: 10, y: 10}, 5));
 addShape(compositeShape, makeSqaure({x:20, y:30, }, 8));
 
-console.log(translate(compositeShape, 4, 7));
-console.log(scale(compositeShape, 2));
+console.log("기존 CompositeShapes : ", compositeShape.shapes );
+
+console.log(" x = 4, y = 7 만큼 이동한 CompositeShapes : ", translate(compositeShape, 4, 7));
+
+console.log("크기를 2배 확장한 CompositeShapes : ", scale(compositeShape, 2));
 
 module.exports = {
   translate, scale, makeCircle, makeSqaure

@@ -3,6 +3,10 @@ const { translate, scale , makeCircle, makeSqaure} = require('./composite-shape'
 
 let journalEntries = [];
 
+// 기존 shape을 하위요소로 하는 journaledShape 을 shapeType으로 지정
+// 이렇게하면 하위 요소 shape 으로 기존의 변형 작업은 그대로 유지하면서
+// 새로운 journaledShape 에 따른 처리를 추가할 수 있다.
+
 const makeJournaledShape = (shape) => {
   return {shapeType: 'journaledShape',
   shape: shape,

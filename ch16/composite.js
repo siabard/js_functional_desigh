@@ -64,7 +64,17 @@ turnOff.addMethod('composite-switchable', (compositeSwitchable) => {
 
 console.log("Composite Switchable");
 const compositeSwitchable = makeCompositeSwitchable();
+
+// 밝기 조정 가능한 등을 추가한다. (variable-light)
 add(compositeSwitchable, makeVariableLight());
+
+// On, Off 만 되는 등을 추가한다. (light)
 add(compositeSwitchable, makeLight());
+
+// compositeSwitchable 의 모든 등을 켠다
 console.log(turnOn(compositeSwitchable));
+
+
+// compositeSwitchable 의 모든 등을 끈다.
 console.log(turnOff(compositeSwitchable));
+
