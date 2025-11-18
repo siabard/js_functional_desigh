@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "fast-check": "^3.23.2"
