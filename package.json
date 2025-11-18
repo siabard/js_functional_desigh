@@ -7,7 +7,7 @@
     "ch13_test": "jest ch13",
     "ch15_test": "jest ch15",
     "ch16_test": "jest ch16",
-    "ch17_test": "jest ch_17"
+    "ch17_test": "jest ch17"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
