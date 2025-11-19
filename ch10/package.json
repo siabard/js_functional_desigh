@@ -1,12 +1,6 @@
 {
   "scripts": {
-    "ch06_test": "jest ch06",
-    "ch07_test": "jest ch07",
-    "ch08_test": "jest ch08",
-    "ch09_test": "jest ch09",
-    "ch13_test": "jest ch13",
-    "ch15_test": "jest ch15",
-    "ch17_test": "jest ch17"
+    "start" : "node --loader ts-node/esm spec.ts"
   },
   "devDependencies": {
     "@types/node": "^18.6.5",
@@ -24,4 +18,5 @@
     "jest": "^30.2.0",
     "zod": "^3.23.8"
   }
+  ,"type": "module" 
 }
